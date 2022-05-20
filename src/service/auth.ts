@@ -84,3 +84,16 @@ export function GET_SEACH({ url, query}: SeachProps){
   }
 }
 
+export function GET(tv: string){
+  return {
+    url: `${API_URL}${tv}?api_key=${key}`,
+    options: {
+      method: 'GET',
+      header: { 
+        Authorization: `Bearer ${toke}`,
+        'Content-Type': 'application/json;charset=utf-8'
+      },
+    }
+  }
+}
+

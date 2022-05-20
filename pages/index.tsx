@@ -9,6 +9,7 @@ import { useTvAiring } from '../src/hooks/tv/use-tv-airing'
 import { useTvRated } from '../src/hooks/tv/use-tv-top-rated'
 import { useTvPopular } from '../src/hooks/tv/use-tv-popular'
 import { Carrosel } from '../src/components/carrosel'
+import { Choose } from 'react-extras'
 
 const Home: NextPage = () => {
   async function getApiToken(){
@@ -21,12 +22,16 @@ const Home: NextPage = () => {
     })
   }
 
-  const { data: moveList } = useMovePopular()
-  const { data: tvList } = useTvPopular()
-  const { data: upcoming } = useMoveUpcoming()
-  const { data: tvListAiring } = useTvAiring()
-  const { data: rated } = useMoveRated()
-  const { data: tvRated } = useTvRated()
+  const { data: moveList, isSuccess: isSuccessPopular, isError: isErrorPopular, isLoading: isLoadingPopular } = useMovePopular()
+  const { data: tvList, isSuccess: isSuccessTvPopular, isError: isErrorTvPopular, isLoading: isLoadingTvPopolar } = useTvPopular()
+  const { data: upcoming, isSuccess: isSuccessUpcoming, isError: isErrorUpcoming, isLoading: isLoadingUpcoming } = useMoveUpcoming()
+  const { data: tvListAiring, isSuccess: isSuccessTvAiring, isError: isErrorTvAiring , isLoading: isLoadingTvAiring } = useTvAiring()
+  const { data: rated, isSuccess: isSuccessRated, isError: isErrorRated, isLoading: isLoadingRated } = useMoveRated()
+  const { data: tvRated, isSuccess: isSuccessTvRated, isError: isErrorTvRated, isLoading: isLoadingTvRated } = useTvRated()
+
+  const isSuccess = isSuccessPopular && isSuccessRated && isSuccessTvAiring && isSuccessTvPopular && isSuccessTvRated && isSuccessUpcoming
+  const isError = isErrorPopular && isErrorRated && isErrorTvAiring && isErrorTvPopular && isErrorTvRated && isErrorUpcoming
+  const isLoading = isLoadingPopular && isLoadingRated && isLoadingTvAiring && isLoadingTvPopolar && isLoadingTvRated && isLoadingUpcoming
 
   useEffect(() => {
     getApiToken()
