@@ -3,7 +3,6 @@ import "slick-carousel/slick/slick-theme.css";
 import '../styles/globals.css'
 import type { AppProps } from 'next/app'
 import { QueryClient, QueryClientProvider } from "react-query";
-import { NavBar } from '../src/components/nav-bar';
 import { Layout } from '../src/components/layout';
 
 function MyApp({ Component, pageProps }: AppProps) {

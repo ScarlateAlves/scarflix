@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { Flex } from "rebass";
 import { CardLink } from "../../src/components/card/card-link";
+import { useMoveVideos } from "../../src/hooks/move/use-move-videos";
 import { GET_SEACH } from "../../src/service/auth";
 import { image } from "../../src/utils";
 
@@ -19,6 +20,8 @@ const Search: NextPage = () => {
     const json = await response.json()
     setSearch(json)
   }
+
+  const { data } = useMoveVideos(String(searchId))
 
   useEffect(() => {
     if(searchId){

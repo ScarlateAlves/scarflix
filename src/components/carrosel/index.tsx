@@ -1,14 +1,14 @@
 import React from 'react'
-import {If} from 'react-extras';
+
 import { Heading } from 'rebass'
 import { CardLink } from '../card/card-link'
 import { MultipleItems } from '../scroll/scroll-lateral'
 import { image } from '../../utils/index'
-import { Label } from '@rebass/forms'
+
 interface CarroselProps {
   title?: string
   name?: string
-  list?: any | []
+  list: any | []
 }
 
 export const Carrosel = ({ title, list }: CarroselProps) => {
@@ -22,7 +22,7 @@ export const Carrosel = ({ title, list }: CarroselProps) => {
        ))}
     </MultipleItems>
     :
-    ''
+    '...carregando'
    }
  </>
  )

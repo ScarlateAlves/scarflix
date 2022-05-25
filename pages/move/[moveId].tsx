@@ -2,6 +2,7 @@ import { NextPage } from "next"
 import { useRouter } from "next/router";
 import { useMove } from "../../src/hooks/move/use-move";
 import { useMoveImage } from "../../src/hooks/move/use-move-image";
+import { useMoveVideos } from "../../src/hooks/move/use-move-videos";
 import { image } from "../../src/utils";
 
 const Move: NextPage = () => {
@@ -11,8 +12,8 @@ const Move: NextPage = () => {
 
   const { data: move, isSuccess: isSuccessMove } = useMove(id)
 
-  const { data } = useMoveImage(id)
-console.log(data)
+  const { data } = useMoveVideos(id)
+
   return(
     <>
       { isSuccessMove ? 

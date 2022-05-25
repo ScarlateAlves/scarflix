@@ -7,8 +7,7 @@ export const ContainerImage = styled.div`
   position: absolute;
   top: 260px;
   bottom: 32px;
-  left: 0;
-  right: 7px;
+  width: 98.6%;
   display: flex;
   background-color: #323232;
   flex-direction: column;
@@ -25,7 +24,6 @@ export const Item = styled.div`
   flex: 1 1 0px;
   transition: transform 500ms;
   margin-bottom: 2.5rem;
-
   &:focus, &:hover {
     transform: scale(1.4);
     z-index: 1;
@@ -38,7 +36,7 @@ export const Item = styled.div`
 `
 
 export const Imagem = styled.img`
-  margin: 2rem 0;
+  margin: 2rem 3px;
   border-radius: 10px;
 `
 

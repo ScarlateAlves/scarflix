@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
+import { Input } from '@rebass/forms'
+import { Flex } from 'rebass'
 
 export const SeachBar = () => {
   const router = useRouter()
@@ -13,10 +15,11 @@ export const SeachBar = () => {
 
   return(
     <>
-      <input 
-        placeholder='buscar'
+      <Input  
+        placeholder='Buscar' 
         value={search}
         onChange={(e: any) => setSearch(e.target.value)}
+        color='white' 
       />
     </>
   )
