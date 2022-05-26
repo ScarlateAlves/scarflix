@@ -27,9 +27,9 @@ export function USER_GET(){
   }
 }
 
-export function USER_GET_GENRE(){
+export function USER_GET_GENRE(type: string){
   return {
-    url: `${API_URL}/genre/movie/list?api_key=${key}`,
+    url: `${API_URL}/genre/${type}/list?api_key=${key}`,
     options: {
       method: 'GET',
       header: { 
@@ -39,6 +39,7 @@ export function USER_GET_GENRE(){
     }
   }
 }
+
 
 export function GET_MOVE(movie_id: string){
   return {
