@@ -3,7 +3,7 @@ import { useRouter } from 'next/router'
 import { Container, Item, Imagem, ContainerImage, CartStyles } from "./styles"
 import add from '../../assets/images/add.png'
 import inferior from '../../assets/images/inferior.png'
-import play from '../../assets/images/play-button.png'
+import play from '../../assets/images/botao-play.png'
 import { Flex, Heading } from 'rebass'
 
 
