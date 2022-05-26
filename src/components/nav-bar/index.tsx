@@ -10,7 +10,7 @@ export const NavBar = () => {
   return(
     <NavBarContainer>
       <Flex style={{ gap: '2rem'}} alignItems='center'>
-        <Heading fontSize='1.5rem' fontFamily= '"Monoton", cursive' color='#F10086'>SCARFLIX</Heading>
+        <Heading fontSize='1.3rem' fontFamily= '"Monoton", cursive' color='#F10086'>SCARFLIX</Heading>
         <NavLink />
       </Flex>
       <Flex style={{ gap: '1rem'}} >
