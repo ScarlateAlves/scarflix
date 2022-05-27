@@ -1,4 +1,5 @@
 import  Image  from 'next/image'
+import { useRouter } from 'next/router'
 import { useState } from 'react'
 import { For } from 'react-extras'
 import { Button, Flex, Heading, Text } from "rebass"
@@ -11,6 +12,7 @@ interface GenreProps {
 }
 export const ButtonGeneros = ({ genre, title }:  GenreProps) => {
   const [ togle, setTogle ] = useState(false)
+  const router = useRouter()
 
   const HandleTogle = () => {
     setTogle(!togle)
@@ -32,7 +34,15 @@ export const ButtonGeneros = ({ genre, title }:  GenreProps) => {
          </Button>
          <ModalGeneros visible={togle}>
            <Flex flexWrap='wrap' style={{ gap: '1.5rem'}}>
-           <For of={genre} render={(item : any, index) => <Text style={{ cursor: 'pointer'}} key={index}>{item.name}</Text> } />
+           <For 
+            of={genre} 
+            render={(item : any, index) => 
+            <Text 
+              onClick={() => router.push(`/genre/${item.id}?bc=${router.asPath} `)} 
+              style={{ cursor: 'pointer'}} key={index}>{item.name}
+              </Text> 
+            } 
+            />
            </Flex>
          </ModalGeneros>
          </ContaineButton>

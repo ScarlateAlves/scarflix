@@ -32,7 +32,7 @@ export const CardLink = ({ src, title, id }: CardProps) => {
             </CartStyles>
           </Flex>
           <Flex>
-            <CartStyles onClick={() => router.push(`/move/${id}`)}>
+            <CartStyles onClick={() => router.push(`${router.pathname}/${id}`)}>
             <Image src={inferior} width='30px' height='30px' alt='img'  />
             </CartStyles>
           </Flex>
