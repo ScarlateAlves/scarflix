@@ -1,5 +1,6 @@
 import  Image  from 'next/image'
-import { Box } from 'rebass'
+import { Box, Flex } from 'rebass'
+import { ArrowICon } from '../../assets/icon/arrow-icon'
 import user from '../../assets/images/user.png'
 
 interface AvatarProps {
@@ -9,14 +10,17 @@ interface AvatarProps {
   height?: string
 }
 
-export const Avatar = ({ src, alt, width='30px', height='30'}: AvatarProps) => {
+export const Avatar = ({ src, alt, width='43px', height='40'}: AvatarProps) => {
   const img = src ? src : user
 
   return(
     <>
-    <Box backgroundColor='white' width={width}>
-      <Image src={img} width={width} height={height} alt={alt}  />
-    </Box>
+    <Flex style={{ gap: '0.5rem'}} alignItems='center'>
+      <Box style={{ borderRadius: '50%' }} backgroundColor='white' width={width}>
+        <Image src={img} width={width} height={height} alt={alt}  />
+      </Box>
+      <ArrowICon/>
+    </Flex>
     </>
   )
 }

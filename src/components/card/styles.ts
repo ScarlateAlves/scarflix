@@ -18,12 +18,13 @@ export const ContainerImage = styled.div`
   visibility: hidden;
 `
 
-export const Item = styled.div`
+export const Item = styled.div<{marginBottom?: string}>`
   position: relative;
   display: block;
   flex: 1 1 0px;
   transition: transform 500ms;
-  margin-bottom: 2.5rem;
+  margin-bottom: ${ props => props.marginBottom ?? '2.5rem'};
+  cursor: pointer;
   &:focus, &:hover {
     transform: scale(1.4);
     z-index: 1;

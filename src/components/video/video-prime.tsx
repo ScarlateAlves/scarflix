@@ -1,15 +1,25 @@
 import React from 'react'
 import { Flex } from 'rebass'
 
-export const Video =( { id }: any ) => {
-  const isMove = id ? id : 'lWcD2icgoGs'
+interface VideoProps {
+  id: any
+  width?: string;
+  height?: string;
+  marginBottom?: string
+}
+
+export const Video =( { id, width, height, marginBottom }: VideoProps ) => {
   return(
     <>
-     <Flex height='88vh' width='100%'>
+     <Flex 
+      mb={marginBottom ?? '4.5rem'} 
+      height={ height ?? '82vh'} 
+      width={width ?? '100%'}
+    >
     <iframe 
           width="100%" 
           height="100%" 
-          src={`https://www.youtube.com/embed/${isMove}`} 
+          src={`https://www.youtube.com/embed/${id}`} 
           title="YouTube video player" 
           frameBorder="0" 
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
