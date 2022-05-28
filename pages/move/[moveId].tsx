@@ -1,7 +1,10 @@
 import { NextPage } from "next"
 import { useRouter } from "next/router";
+import { Choose } from "react-extras";
+import { Play } from "../../src/components/layout-play/play";
 import { useMove } from "../../src/hooks/move/use-move";
-import { useMoveImage } from "../../src/hooks/move/use-move-image";
+import { useMovieRecommendations } from "../../src/hooks/move/use-move-recommendations";
+import { useMovieSimilar } from "../../src/hooks/move/use-move-similar";
 import { useMoveVideos } from "../../src/hooks/move/use-move-videos";
 import { image } from "../../src/utils";
 
@@ -11,20 +14,31 @@ const Move: NextPage = () => {
   let id = moveId as string
 
   const { data: move, isSuccess: isSuccessMove } = useMove(id)
+  const { data: moveVideos, isSuccess: isSuccessMoveVideos } = useMoveVideos(id)
+  const { data: movieSimilar, isSuccess: isSuccessMoveSimilar } = useMovieSimilar(id)
+  const { data: movieRecommendations, isSuccess: isSuccessMovieRecommendations } = useMovieRecommendations(id)
 
-  const { data } = useMoveVideos(id)
+  const videoKey = moveVideos?.results[0].key
+  const similar = movieSimilar?.results
+  const recommendations= movieRecommendations?.results
+
+  const isSuccess = isSuccessMove && isSuccessMoveVideos && isSuccessMoveSimilar && isSuccessMovieRecommendations
 
   return(
     <>
-      { isSuccessMove ? 
-        <div>
-            <p>{move.title}</p>
-          <img src={`${image}${move.poster_path}`}/>
-          <span>{move.overview}</span>
-        </div>
-      :
-      'erro'
-      }
+    <Choose>
+      <Choose.When condition={isSuccess}>
+      <Play 
+        videoKey={videoKey} 
+        data={move} 
+        similar={similar}
+        recommendations={recommendations}
+          />
+      </Choose.When>
+      <Choose.Otherwise>
+        ...carregando
+      </Choose.Otherwise>
+    </Choose>
     </>
   )
 

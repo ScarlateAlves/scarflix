@@ -11,14 +11,16 @@ interface CardProps {
   src?: any
   title?: string
   id?: any
+  genre?: string
+  marginBottom?: string
 }
-export const CardLink = ({ src, title, id }: CardProps) => {
+export const CardLink = ({ src, title, id, genre, marginBottom }: CardProps) => {
   const router = useRouter()
   
   return(
     <>
     <Container>
-      <Item>
+      <Item marginBottom={marginBottom}>
         <Imagem src={src}/>
         <ContainerImage>
           <Heading fontSize='1rem' my='5px'>{title}</Heading>
@@ -32,7 +34,7 @@ export const CardLink = ({ src, title, id }: CardProps) => {
             </CartStyles>
           </Flex>
           <Flex>
-            <CartStyles onClick={() => router.push(`${router.pathname}/${id}`)}>
+            <CartStyles onClick={() => router.push(`${genre}${router.pathname}/${id}`)}>
             <Image src={inferior} width='30px' height='30px' alt='img'  />
             </CartStyles>
           </Flex>

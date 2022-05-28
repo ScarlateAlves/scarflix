@@ -1,15 +1,16 @@
 import styled from "styled-components";
 
-export const ContainerGeneros = styled.div`
+export const ContainerGeneros = styled.div<{ background?: boolean}>`
+background: ${ props => props.background ? 'black' : 'transparent'};
 position: fixed;
-margin-top: 3rem;
+margin-top: 4rem;
 display: flex;
 gap: 4rem;
 align-items: center;
 z-index: 1;
-background-color: black;
-width: 100%;
-padding: 1rem 0;
+width: 95%;
+padding: 0.7rem 0.5rem;
+opacity: 5;
 `
 
 export const ContaineButton = styled.div`

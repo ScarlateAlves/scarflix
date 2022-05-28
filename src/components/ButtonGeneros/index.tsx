@@ -14,6 +14,18 @@ export const ButtonGeneros = ({ genre, title }:  GenreProps) => {
   const [ togle, setTogle ] = useState(false)
   const router = useRouter()
 
+  const [colorChange, setColorchange] = useState(false);
+  const changeNavbarColor = () =>{
+     if(window.scrollY >= 200){
+       setColorchange(true);
+     }
+     else{
+       setColorchange(false);
+     }
+  };
+  window.addEventListener('scroll', changeNavbarColor);
+  
+
   const HandleTogle = () => {
     setTogle(!togle)
   }
@@ -21,12 +33,12 @@ export const ButtonGeneros = ({ genre, title }:  GenreProps) => {
 
   return(
     <>
-      <ContainerGeneros>
-        <Heading fontSize='2.2rem'>{title}</Heading>
+      <ContainerGeneros background={colorChange}>
+        <Heading color='#fff' fontFamily='Montserrat, sans-serif' fontSize='38px'>{title}</Heading>
         <ContaineButton>
        <Button onClick={HandleTogle} backgroundColor='black' style={{  cursor: 'pointer', border: 'solid 1px white'}} color='black'>
          <Flex color='white' alignItems='center' style={{ gap: '1rem'}}>
-         Gêneros 
+          <Text>Gêneros</Text>
          <Flex style={{ borderRadius: '100px', border: 'solid 1px white'}} backgroundColor='white'>
          <Image src={seta} width={25} height={20}  />
          </Flex>
@@ -44,6 +56,7 @@ export const ButtonGeneros = ({ genre, title }:  GenreProps) => {
             } 
             />
            </Flex>
+           
          </ModalGeneros>
          </ContaineButton>
      </ContainerGeneros>

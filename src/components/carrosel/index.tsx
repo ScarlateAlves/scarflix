@@ -8,17 +8,24 @@ import { image } from '../../utils/index'
 interface CarroselProps {
   title?: string
   name?: string
+  genre?: string
   list: any | []
 }
 
-export const Carrosel = ({ title, list }: CarroselProps) => {
+export const Carrosel = ({ title, list, genre }: CarroselProps) => {
  return(
   <>
-  <Heading>{title}</Heading>
+  <Heading fontSize='2rem' fontFamily='Montserrat, sans-serif' >{title}</Heading>
    {list ?
     <MultipleItems>
     { list.map((item: any) => (
-        <CardLink id={item.id} key={item.id} src={`${image}${item.poster_path}`} title={item.title ? item.title : item.name}/>
+        <CardLink 
+          id={item.id} 
+          key={item.id} 
+          src={`${image}${item.poster_path}`} 
+          genre={genre}
+          title={item.title ? item.title : item.name}/>
+          
        ))}
     </MultipleItems>
     :

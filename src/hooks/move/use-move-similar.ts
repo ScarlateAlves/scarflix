@@ -1,16 +1,16 @@
 import { useQuery } from "react-query";
 import { GET } from "../../service/auth";
 
-async function fetchVideos(id: string) {
-    const move = `/movie/${id}/videos`
+async function fetchMovieSimilar(id: string) {
+    const move = `/movie/${id}/similar`
     const { url, options } = GET(move)
     const response = await fetch(url, options)
     const json = await response.json()
     return { data: json}
 }
 
-export const useMoveVideos = (id: string) => {
-  const { data: data, ...resQuery } = useQuery<any>(['useVideos', id], () => fetchVideos(id),
+export const useMovieSimilar = (id: string) => {
+  const { data: data, ...resQuery } = useQuery<any>(['useMovieSimilar', id], () => fetchMovieSimilar(id),
   {
      enabled: Boolean(id) 
   }
