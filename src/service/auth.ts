@@ -85,6 +85,19 @@ export function GET_SEACH({ url, query}: SeachProps){
   }
 }
 
+export function GET_DISCOVER({ url, query}: SeachProps){
+  return {
+    url: `${API_URL}${url}?api_key=${key}${query}`,
+    options: {
+      method: 'GET',
+      header: { 
+        Authorization: `Bearer ${toke}`,
+        'Content-Type': 'application/json;charset=utf-8'
+      },
+    }
+  }
+}
+
 export function GET(tv: string){
   return {
     url: `${API_URL}${tv}?api_key=${key}`,
