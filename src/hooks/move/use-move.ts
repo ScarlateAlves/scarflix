@@ -11,7 +11,10 @@ async function fetchMove(id: string) {
 }
 
 export const useMove = (id: string) => {
-  const { data: data, ...resQuery } = useQuery<any>(['useMove'], () => fetchMove(id) )
+  const { data: data, ...resQuery } = useQuery<any>(['useMove'], () => fetchMove(id),
+  {
+    enabled: Boolean(id)
+  } )
 
   return{ data: data?.data, ...resQuery}
 }
