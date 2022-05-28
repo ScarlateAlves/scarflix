@@ -7,6 +7,7 @@ import { Video } from '../src/components/video/video-prime'
 import { ButtonGeneros } from '../src/components/ButtonGeneros'
 import { useGenreTv } from '../src/hooks/genres/genre-tv'
 import { Choose } from 'react-extras'
+import { useTvVideos } from '../src/hooks/tv/use-tv-videos'
 
 
 const Tv: NextPage = () => {
@@ -14,12 +15,15 @@ const Tv: NextPage = () => {
   const { data: tvListAiring } = useTvAiring()
   const { data: tvRated } = useTvRated()
   const { data: tvGenre, isSuccess: isSuccessGenreTv, isLoading: isLoadingGenreTv } = useGenreTv()
+  const { data: tvVideo } = useTvVideos(String(tvList?.results[0]?.id ))
+
+  const keyVideo = tvVideo?.results[1]?.key
 
   return (
     <> 
      <Choose>
        <Choose.When condition={isSuccessGenreTv} >
-       <ButtonGeneros genre={tvGenre?.genres} title='Series de Tv' />
+       <ButtonGeneros genre={tvGenre?.genres} title='Series' />
        </Choose.When>
        <Choose.When condition={isLoadingGenreTv}>
          ...carregando
@@ -28,7 +32,7 @@ const Tv: NextPage = () => {
          error
        </Choose.Otherwise>
      </Choose>
-      <Video id='lWcD2icgoGs?autoplay=1' />
+      <Video id={keyVideo} />
       <Carrosel title='No ar na tv hoje' list={tvListAiring?.results} />
       <Carrosel title='Bem avaliado na tv' list={tvRated?.results} />
       <Carrosel title='Popular na tv' list={tvList?.results} />
