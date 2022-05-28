@@ -1,4 +1,5 @@
 import React from 'react'
+import { Footer } from '../footer'
 import { NavBar } from '../nav-bar'
 import { LayoutStyles } from './styles'
 
@@ -12,6 +13,7 @@ export const Layout = ({ children }: LayoutProps) => {
      <LayoutStyles>
      { children }
      </LayoutStyles>
+     <Footer/>
     </>
   )
 }
